@@ -1,0 +1,7 @@
+const AUTH_STEPS = {
+  SEND_OTP: 'SEND_OTP',
+  VERIFY_OTP: 'VERIFY_OTP',
+  AUTHENTICATED: 'AUTHENTICATED',
+};
+
+module.exports = AUTH_STEPS;

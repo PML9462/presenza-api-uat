@@ -1,0 +1,16 @@
+module.exports.attendanceController = require("./attendance.controller");
+module.exports.authController = require("./auth.controller");
+module.exports.employeeController = require("./employee.controller");
+module.exports.departmentController = require("./department.controller");
+module.exports.designationController = require("./designation.controller");
+module.exports.activitiesController = require("./activities.controller");
+module.exports.dashboardController = require("./dashboard.controller");
+module.exports.leaveController = require("./leave.controller");
+module.exports.leaveTypeController = require('./leaveType.controller')
+module.exports.officeController = require('./office.controller')
+module.exports.kraController = require('./kra.controller')
+module.exports.expenseController = require('./expense.controller')
+module.exports.payrollController = require('./payroll.controller')
+module.exports.kraCategoryController = require('./kraCategory.controller')
+module.exports.fuelRateController = require('./fuelRateController')
+module.exports.reportController = require('./report.controller')
