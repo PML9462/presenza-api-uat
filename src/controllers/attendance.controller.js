@@ -101,6 +101,31 @@ const punchOut = catchAsync(async (req, res) => {
 ========================================================= */
 const getAttendanceHistory = async (req, res) => {
   try {
+    // const { date, fromDate, toDate } = req.query || {};
+    // const { employeeId } = req.user;
+
+    // const matchQuery = {};
+    // let start, end;
+
+    // /* ================================
+    //    📅 DATE FILTER
+    // ================================ */
+
+    // if (date) {
+    //   start = new Date(date);
+    //   start.setHours(0, 0, 0, 0);
+
+    //   end = new Date(date);
+    //   end.setHours(23, 59, 59, 999);
+    // } else if (fromDate && toDate) {
+    //   start = new Date(fromDate);
+    //   start.setHours(0, 0, 0, 0);
+
+    //   end = new Date(toDate);
+    //   end.setHours(23, 59, 59, 999);
+    // }
+
+
     const { date, fromDate, toDate } = req.query || {};
     const { employeeId } = req.user;
 
@@ -111,18 +136,22 @@ const getAttendanceHistory = async (req, res) => {
        📅 DATE FILTER
     ================================ */
 
+    const getStartOfDay = (dateString) => {
+      const [year, month, day] = dateString.split('-').map(Number);
+      return new Date(year, month - 1, day, 0, 0, 0, 0);
+    };
+
+    const getEndOfDay = (dateString) => {
+      const [year, month, day] = dateString.split('-').map(Number);
+      return new Date(year, month - 1, day, 23, 59, 59, 999);
+    };
+
     if (date) {
-      start = new Date(date);
-      start.setHours(0, 0, 0, 0);
-
-      end = new Date(date);
-      end.setHours(23, 59, 59, 999);
+      start = getStartOfDay(date);
+      end = getEndOfDay(date);
     } else if (fromDate && toDate) {
-      start = new Date(fromDate);
-      start.setHours(0, 0, 0, 0);
-
-      end = new Date(toDate);
-      end.setHours(23, 59, 59, 999);
+      start = getStartOfDay(fromDate);
+      end = getEndOfDay(toDate);
     }
 
     /* ================================
