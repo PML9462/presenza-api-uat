@@ -4,6 +4,7 @@ const compression = require('compression');
 
 const cookieParser = require('cookie-parser');
 const httpStatus = require('http-status');
+ 
 
 const morgan = require('./config/morgan');
 const routes = require('./routes');
@@ -63,6 +64,8 @@ app.use(
     allowedHeaders: ['Content-Type', 'Authorization'],
   })
 );
+
+app.use(require('express-status-monitor')());
 
 /* -------------------- Health Check -------------------- */
 app.get('/api/v1/health', (req, res) => {
